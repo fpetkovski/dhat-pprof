@@ -1,0 +1,6 @@
+/target
+
+# Generated profiling output
+*.pb.gz
+dhat-heap.json
+!examples/dhat-heap.json
