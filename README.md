@@ -4,7 +4,7 @@ Convert [DHAT](https://valgrind.org/docs/manual/dh-manual.html) heap profiling d
 
 ## Features
 
-- **4 sample types**: alloc_objects, alloc_space, inuse_objects, inuse_space
+- **4 sample types**: alloc_objects, alloc_space (default), inuse_objects, inuse_space
 - **Full call stack preservation** with source file and line information
 - **Fast conversion**: ~310 µs end-to-end
 - **Both library and CLI** for flexible integration
@@ -74,17 +74,17 @@ dhat_pprof::write_pprof(&pprof_profile, "dhat-heap.pb.gz")?;
 
 ## Sample Types
 
-| pprof Type | DHAT Field | Description |
-|------------|------------|-------------|
-| `alloc_objects` | `tbk` | Total allocations |
-| `alloc_space` | `tb` | Total bytes allocated |
-| `inuse_objects` | `mbk` | Peak live objects |
-| `inuse_space` | `mb` | Peak memory usage |
+| pprof Type              | DHAT Field | Description |
+|-------------------------|------------|-------------|
+| `alloc_objects`         | `tbk` | Total allocations |
+| `alloc_space` (default) | `tb` | Total bytes allocated |
+| `inuse_objects`         | `mbk` | Peak live objects |
+| `inuse_space`           | `mb` | Peak memory usage |
 
 Select with pprof's `-sample_index`:
 
 ```bash
-go tool pprof -sample_index=alloc_space -top dhat-heap.pb.gz
+go tool pprof -sample_index=inuse_space -top dhat-heap.pb.gz
 ```
 
 ## Examples
