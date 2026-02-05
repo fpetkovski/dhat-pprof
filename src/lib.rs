@@ -238,7 +238,7 @@ pub fn convert_profile(dhat: DhatProfile) -> Result<Profile, Box<dyn Error>> {
         }),
         period: 524288,  // default heap sampling rate
         comment: vec![],
-        default_sample_type: 1,
+        default_sample_type: alloc_space_type,
         doc_url: 0,
     };
 
